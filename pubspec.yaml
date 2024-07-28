@@ -38,6 +38,9 @@ dependencies:
   hive: ^2.2.3
   path_provider: ^2.1.3
   hive_flutter: ^1.1.0
+  hive_cache_manager: ^0.0.1
+  http_methods: ^1.1.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

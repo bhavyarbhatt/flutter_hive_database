@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +13,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      
+      appBar: AppBar(
+        title: Text("Hive Database"),
+      )
     );
   }
 }
