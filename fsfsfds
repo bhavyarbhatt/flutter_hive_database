@@ -1,0 +1,45 @@
+[1mdiff --git a/lib/main.dart b/lib/main.dart[m
+[1mindex 89ad59c..416cb09 100644[m
+[1m--- a/lib/main.dart[m
+[1m+++ b/lib/main.dart[m
+[36m@@ -4,7 +4,7 @@[m [mimport 'package:flutter/material.dart';[m
+ import 'package:hive/hive.dart';[m
+ import 'package:hive_database/models/albun.dart';[m
+ import 'package:path_provider/path_provider.dart';[m
+[31m-import 'package:http/http.dart' as http;[m
+[32m+[m[32mimport 'package:http/http.dart' as http;[m[41m  [m
+ [m
+ void main() async{[m
+   WidgetsFlutterBinding.ensureInitialized();[m
+[36m@@ -15,11 +15,7 @@[m [mvoid main() async{[m
+ [m
+ class MyApp extends StatelessWidget {[m
+   const MyApp({super.key});[m
+[31m-[m
+   @override[m
+[31m-[m
+[31m-  [m
+[31m-[m
+   Widget build(BuildContext context) {[m
+     return MaterialApp([m
+       title: 'Flutter Demo',[m
+[36m@@ -54,7 +50,18 @@[m [mlate Future<Album> futureAlbum;[m
+   @override[m
+   Widget build(BuildContext context) {[m
+     return Scaffold([m
+[31m-[m
+[32m+[m[32m      body: FutureBuilder<Album>([m
+[32m+[m[32m        future: futureAlbum,[m
+[32m+[m[32m        builder: (context, snapshot) {[m
+[32m+[m[32m          if(snapshot.hasData) {[m
+[32m+[m[32m              return Text(snapshot.data!.title);[m
+[32m+[m[32m          } else if(snapshot.hasError){[m
+[32m+[m[32m              return Text('${snapshot.error}');[m
+[32m+[m[32m          }[m
+[32m+[m
+[32m+[m[32m          return const CircularProgressIndicator();[m
+[32m+[m[32m        },[m
+[32m+[m[32m      ),[m
+     );[m
+   }[m
+   [m

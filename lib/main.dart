@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_database/models/albun.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;  
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,11 +15,7 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
-
-  
-
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -54,7 +50,18 @@ late Future<Album> futureAlbum;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: FutureBuilder<Album>(
+        future: futureAlbum,
+        builder: (context, snapshot) {
+          if(snapshot.hasData) {
+              return Text(snapshot.data!.title);
+          } else if(snapshot.hasError){
+              return Text('${snapshot.error}');
+          }
 
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
   
